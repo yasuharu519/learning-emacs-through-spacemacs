@@ -31,7 +31,7 @@
 - 実行しているEmacsが最低動作バージョンを満たしているか確認
 
 
-```
+```elisp
 (when (spacemacs/emacs-version-ok)
   (load-file (concat user-emacs-directory "core/core-load-paths.el"))
   (require 'core-spacemacs)

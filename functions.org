@@ -8,7 +8,7 @@ elispでの関数について
   (defconst SYMBOL INITVALUE [DOCSTRING])
 #+END_SRC
 
-*SYMBOL* を *INITVALUE* で定義
+=SYMBOL= を =INITVALUE= で定義
 
 ** defun
 
@@ -16,87 +16,88 @@ elispでの関数について
   (defun NAME ARGLIST &optional DOCSTRING DECL &rest BODY)
 #+END_SRC
 
-`NAME` は関数名。
-`(lambda ARGLIST [DOCSTRING] BODY...)` が定義となる。
+=NAME= は関数名。
+=(lambda ARGLIST [DOCSTRING] BODY...)= が定義となる。
 
 ** version<=
 
-```elisp
-(version<= V1 V2)
-```
+#+BEGIN_SRC emacs-lisp
+  (version<= V1 V2)
+#+END_SRC
 
-`V1`のほうが`V2`よりもバージョンが小さければ`t`を返す
+=V1= のほうが =V2= よりもバージョンが小さければ =t= を返す
 
 ** require
 
-```elisp
-(require FEATURE &optional FILENAME NOERROR)
-```
+#+BEGIN_SRC emacs-lisp
+  (require FEATURE &optional FILENAME NOERROR)
+#+END_SRC
 
-`FEATURE`がまだロードされていなければ`FILENAME`から読み出す。
-`FILENAME`が`nil`であれば、`FEATURE`に`.elc`、`.el`を追加したファイルから読み出しを行う。
-これについては、`get-load-suffixes`を参照。
-`NOERROR`が`nil`でなければ、ファイルが見つからなかったとしても、エラーを出さない。
+=FEATURE= がまだロードされていなければ =FILENAME= から読み出す。
+=FILENAME= が =nil= であれば、 =FEATURE= に =.elc= 、 =.el= を追加したファイルから読み出しを行う。
+これについては、 =get-load-suffixes= を参照。
+=NOERROR= が =nil= でなければ、ファイルが見つからなかったとしても、エラーを出さない。
 
 ** add-to-list
-```elisp
-(add-to-list LIST-VAR ELEMENT &optional APPEND COMPARE-FN)
-```
 
-`ELEMENT`が`LIST_VAR`に含まれていない場合追加。
-`ELEMENT`が含まれているかどうかのテストは`equal`関数で行われる。
-もしくは`COMPARE-FN`が`nil`でない場合はそちらが使用される。
-`APPEND`が`nil`でない場合は、末尾に追加、そうでない場合は先頭に追加する。
+#+BEGIN_SRC emacs-lisp
+  (add-to-list LIST-VAR ELEMENT &optional APPEND COMPARE-FN)
+#+END_SRC
+
+=ELEMENT= が =LIST_VAR= に含まれていない場合追加。
+=ELEMENT= が含まれているかどうかのテストは =equal= 関数で行われる。
+もしくは =COMPARE-FN= が =nil= でない場合はそちらが使用される。
+=APPEND= が =nil= でない場合は、末尾に追加、そうでない場合は先頭に追加する。
 
 ** expand-file-name
 
-```elisp
-(expand-file-name NAME &optional DEFAULT-DIRECTORY)
-```
+#+BEGIN_SRC emacs-lisp
+  (expand-file-name NAME &optional DEFAULT-DIRECTORY)
+#+END_SRC
 
-`NAME`で指定されたファイルパスを絶対パスに展開
+=NAME= で指定されたファイルパスを絶対パスに展開
 
 ** concat
 
-```elisp
-(concat &rest SEQUENCES)
-```
+#+BEGIN_SRC emacs-lisp
+  (concat &rest SEQUENCES)
+#+END_SRC
 
-`SEQUENCES`を連結してstringを返す
+=SEQUENCES= を連結してstringを返す
 
 ** unless
 
-```elisp
-(unless COND BODY...)
-```
+#+BEGIN_SRC emacs-lisp
+  (unless COND BODY...)
+#+END_SRC
 
-`COND`が`nil`であれば、`BODY`を実行し、そうでなければ`nil`を返す。
-`BODY`を実行した際は、順に実行され、最後の値が返される。
+=COND= が =nil= であれば、 =BODY= を実行し、そうでなければ =nil= を返す。
+=BODY= を実行した際は、順に実行され、最後の値が返される。
 
 ** file-exists-p
 
-```elisp
-(file-exists-p FILENAME)
-```
+#+BEGIN_SRC emacs-lisp
+  (file-exists-p FILENAME)
+#+END_SRC
 
-`FILENAME`が存在すれば`t`を返す。
-存在しないファイルへのシムリンクであれば`nil`を返す。
+=FILENAME= が存在すれば=t=を返す。
+存在しないファイルへのシムリンクであれば =nil= を返す。
 
 
 ** make-directory
 
-```elisp
-(make-directory DIR &optional PARENTS)
-```
+#+BEGIN_SRC emacs-lisp
+  (make-directory DIR &optional PARENTS)
+#+END_SRC
 
-`DIR`のディレクトリを作成。
+=DIR= のディレクトリを作成。
 
 ** mapc
 
-```elisp
-(mapc FUNCTION SEQUENCE)
-```
+#+BEGIN_SRC emacs-lisp
+  (mapc FUNCTION SEQUENCE)
+#+END_SRC
 
-`SEQUENCE`の要素に`FUNCTION`を適用させる。
-結果の値を返さず、`SEQUENCE`が返される。
+=SEQUENCE= の要素に =FUNCTION= を適用させる。
+結果の値を返さず、 =SEQUENCE= が返される。
 

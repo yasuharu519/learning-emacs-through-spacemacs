@@ -5,13 +5,13 @@
 
 ## 関数
 
-- defconst
-- defun
-- version
+- [defconst](https://github.com/yasuharu519/learning-emacs-through-spacemacs/blob/master/functions.md#defconst)
+- [defun](https://github.com/yasuharu519/learning-emacs-through-spacemacs/blob/master/functions.md#defun)
+- [version](https://github.com/yasuharu519/learning-emacs-through-spacemacs/blob/master/functions.md#version)
 
 ## 変数
 
-- emacs-version
+- [emacs-version](https://github.com/yasuharu519/learning-emacs-through-spacemacs/blob/master/variables.md#emacs-version)
 
 ## 処理の流れ
 

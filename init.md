@@ -8,6 +8,7 @@
 - [defconst](https://github.com/yasuharu519/learning-emacs-through-spacemacs/blob/master/functions.md#defconst)
 - [defun](https://github.com/yasuharu519/learning-emacs-through-spacemacs/blob/master/functions.md#defun)
 - [version](https://github.com/yasuharu519/learning-emacs-through-spacemacs/blob/master/functions.md#version)
+- [require](https://github.com/yasuharu519/learning-emacs-through-spacemacs/blob/master/functions.md#require)
 
 ## 変数
 

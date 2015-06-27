@@ -4,3 +4,12 @@
 ## emacs-version
 
 Emacsのバージョンを返す
+
+## load-path
+
+ロードする際のディレクトリ
+
+## user-emacs-directory
+
+emacs関連のファイルが置かれるディレクトリ。
+通常は`~/.emacs.d/`

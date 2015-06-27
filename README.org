@@ -1,0 +1,17 @@
+* Learning elisp through spacemacs
+
+[[https://github.com/syl20bnr/spacemacs][Spacemacs]] のコードリーディングを通して、emacs/elispを学ぼうという試み。
+
+** 参考リンク
+
+- [[http://www.bookshelf.jp/texi/emacs-man/21-3/jp/emacs.html][GNU Emacs マニュアル]]
+- [[http://www.bookshelf.jp/texi/elisp-manual/21-2-8/jp/elisp.html][GNU Emacs Lisp リファレンスマニュアル]]
+
+** License
+
+The license is GPLv3 for all parts as `Spacemacs` does, this includes:
+
+- the initialization and core files
+- all the layer files.
+- the documentation
+

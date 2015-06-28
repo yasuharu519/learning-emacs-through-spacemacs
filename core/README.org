@@ -4,6 +4,7 @@
 
 ** TODO
 
+-  core-spacemacs.org
 -  core-auto-completion.org
 -  core-configuration-layer.org
 -  core-dotspacemacs.org
@@ -13,7 +14,6 @@
 -  core-load-paths.org
 -  core-micro-state.org
 -  core-spacemacs-buffer.org
--  core-spacemacs.org
 -  core-themes-support.org
 -  core-toggle.org
 

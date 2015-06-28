@@ -1,52 +1,73 @@
-;;; core-load-paths.el --- Spacemacs Core File
-;;
-;; Copyright (c) 2012-2014 Sylvain Benner
-;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
-;;
-;; Author: Sylvain Benner <sylvain.benner@gmail.com>
-;; URL: https://github.com/syl20bnr/spacemacs
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; License: GPLv3
-(defun add-to-load-path (dir) (add-to-list 'load-path dir))
+* core-load-paths.el
 
-;; paths
-(defconst spacemacs-core-directory
-  (expand-file-name (concat user-emacs-directory "core/"))
-  "Spacemacs core directory.")
-(defconst spacemacs-release-notes-directory
-  (expand-file-name (concat spacemacs-core-directory "release-notes/"))
-  "Spacemacs release notes directory")
-(defconst spacemacs-banner-directory
-  (expand-file-name (concat spacemacs-core-directory "banners/"))
-  "Spacemacs banners directory.")
-(defconst spacemacs-banner-official-png
-  (expand-file-name (concat spacemacs-banner-directory "img/spacemacs.png"))
-  "Spacemacs official banner image.")
-(defconst spacemacs-directory
-  (expand-file-name (concat user-emacs-directory "spacemacs/"))
-  "Spacemacs base directory.")
-(defconst spacemacs-cache-directory
-  (expand-file-name (concat user-emacs-directory ".cache/"))
-  "Spacemacs storage area for persistent files")
+[[https://github.com/syl20bnr/spacemacs/blob/master/core/core-load-paths.el][spacemacs/core/core-load-paths.el]]
 
-(defconst user-home-directory
-  (expand-file-name "~/")
-  "User home directory (~/).")
-(defconst pcache-directory
-  (concat spacemacs-cache-directory "pcache"))
-(unless (file-exists-p spacemacs-cache-directory)
-    (make-directory spacemacs-cache-directory))
+** 関数
 
-(defconst user-dropbox-directory
-  (expand-file-name (concat user-home-directory "Dropbox/"))
-  "Dropbox directory.")
+- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*add-to-list][add-to-list]]
+- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*expand-file-name][expand-file-name]]
+- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*unless][unless]]
+- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*file-exists-p][file-exists-p]]
 
-;; load paths
-(mapc 'add-to-load-path
-      `(
-        ,(concat user-emacs-directory "core/")
-        ,(concat user-emacs-directory "core/libs/")
-        ,(concat user-dropbox-directory "emacs/")
-        ))
+** 変数
+
+- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/variables.org::*load-path][load-path]]
+- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/variables.org::*user-emacs-directory][user-emacs-directory]]
+
+
+** 処理
+
+#+BEGIN_SRC emacs-lisp
+  (defun add-to-load-path (dir) (add-to-list 'load-path dir))
+#+END_SRC
+
+=load-path= に追加したディレクトリを追加する関数の定義
+
+#+BEGIN_SRC emacs-lisp
+  ;; paths
+  (defconst spacemacs-core-directory
+    (expand-file-name (concat user-emacs-directory "core/"))
+    "Spacemacs core directory.")
+  (defconst spacemacs-release-notes-directory
+    (expand-file-name (concat spacemacs-core-directory "release-notes/"))
+    "Spacemacs release notes directory")
+  (defconst spacemacs-banner-directory
+    (expand-file-name (concat spacemacs-core-directory "banners/"))
+    "Spacemacs banners directory.")
+  (defconst spacemacs-banner-official-png
+    (expand-file-name (concat spacemacs-banner-directory "img/spacemacs.png"))
+    "Spacemacs official banner image.")
+  (defconst spacemacs-directory
+    (expand-file-name (concat user-emacs-directory "spacemacs/"))
+    "Spacemacs base directory.")
+  (defconst spacemacs-cache-directory
+    (expand-file-name (concat user-emacs-directory ".cache/"))
+    "Spacemacs storage area for persistent files")
+
+  (defconst user-home-directory
+    (expand-file-name "~/")
+    "User home directory (~/).")
+  (defconst pcache-directory
+    (concat spacemacs-cache-directory "pcache"))
+  (unless (file-exists-p spacemacs-cache-directory)
+      (make-directory spacemacs-cache-directory))
+
+  (defconst user-dropbox-directory
+    (expand-file-name (concat user-home-directory "Dropbox/"))
+    "Dropbox directory.")
+#+END_SRC
+
+- パス等の定義
+- キャッシュディレクトリが存在しなければディレクトリを作成
+
+#+BEGIN_SRC emacs-lisp
+  ;; load paths
+  (mapc 'add-to-load-path
+        `(
+          ,(concat user-emacs-directory "core/")
+          ,(concat user-emacs-directory "core/libs/")
+          ,(concat user-dropbox-directory "emacs/")
+          ))
+#+END_SRC
+
+- =~/.emacs.d/core/=, =~/.emacs.d/core/libs/=, =~/Dropbox/emacs/= がロードパスに追加される。

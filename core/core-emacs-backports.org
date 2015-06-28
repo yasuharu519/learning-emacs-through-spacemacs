@@ -1,39 +1,53 @@
-;;; core-emacs-backports.el --- Spacemacs Core File
-;;
-;; Copyright (c) 2012-2014 Sylvain Benner
-;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
-;;
-;; Author: Sylvain Benner <sylvain.benner@gmail.com>
-;; URL: https://github.com/syl20bnr/spacemacs
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; License: GPLv3
+* core-emacs-backports.el
 
-(unless (featurep 'subr-x)
-    ;; `subr-x' function for Emacs 24.3 and below
-    (defsubst string-join (strings &optional separator)
-      "Join all STRINGS using SEPARATOR."
-      (mapconcat 'identity strings separator))
+[[https://github.com/syl20bnr/spacemacs/blob/master/core/core-emacs-backports.el][spacemacs/core/core-emacs-backports.el]]
 
-    (defsubst string-trim-left (string)
-      "Remove leading whitespace from STRING."
-      (if (string-match "\\`[ \t\n\r]+" string)
-          (replace-match "" t t string)
-        string))
+** 関数
 
-    (defsubst string-trim-right (string)
-      "Remove trailing whitespace from STRING."
-      (if (string-match "[ \t\n\r]+\\'" string)
-          (replace-match "" t t string)
-        string))
+- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*featurep][featurep]]
+- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*identity][identity]]
+- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*string-match][string-match]]
+- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*replace-match][replace-match]]
 
-    (defsubst string-trim (string)
-      "Remove leading and trailing whitespace from STRING."
-      (string-trim-left (string-trim-right string)))
+** 変数
 
-    (defsubst string-empty-p (string)
-      "Check whether STRING is empty."
-      (string= string "")))
+** 処理
 
-(provide 'core-emacs-backports)
+#+BEGIN_SRC emacs-lisp
+  (unless (featurep 'subr-x)
+      ;; `subr-x' function for Emacs 24.3 and below
+      (defsubst string-join (strings &optional separator)
+        "Join all STRINGS using SEPARATOR."
+        (mapconcat 'identity strings separator))
+
+      (defsubst string-trim-left (string)
+        "Remove leading whitespace from STRING."
+        (if (string-match "\\`[ \t\n\r]+" string)
+            (replace-match "" t t string)
+          string))
+
+      (defsubst string-trim-right (string)
+        "Remove trailing whitespace from STRING."
+        (if (string-match "[ \t\n\r]+\\'" string)
+            (replace-match "" t t string)
+          string))
+
+      (defsubst string-trim (string)
+        "Remove leading and trailing whitespace from STRING."
+        (string-trim-left (string-trim-right string)))
+
+      (defsubst string-empty-p (string)
+        "Check whether STRING is empty."
+        (string= string "")))
+
+  (provide 'core-emacs-backports)
+#+END_SRC
+
+=featurep= 変数で、subr-xが使用できるかどうかをチェックし、使用できない場合は関数定義を行う。
+
+=string-join= 関数は、stringsを結合する
+
+=string-trim-left=, =string-trim-right=, =string-trim= はそれぞれトリム関数
+
+
+

@@ -2,13 +2,15 @@
 
 起動後一番最初に読まれるディレクトリ
 
-** TODO
+** complete
+-  core-emacs-backports.org
+
+** uncomplete
 
 -  core-spacemacs.org
 -  core-auto-completion.org
 -  core-configuration-layer.org
 -  core-dotspacemacs.org
--  core-emacs-backports.org
 -  core-fonts-support.org
 -  core-funcs.org
 -  core-load-paths.org

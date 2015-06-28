@@ -101,3 +101,71 @@ elispでの関数について
 =SEQUENCE= の要素に =FUNCTION= を適用させる。
 結果の値を返さず、 =SEQUENCE= が返される。
 
+** current-time
+
+#+BEGIN_SRC emacs-lisp
+  (current-time)
+#+END_SRC
+
+=1970-01-01 00:00:00= からの経過秒を返す。
+返される値は =(HIGH LOW USEC PSEC)= の形式。
+
+HIGH has the most significant bits of the seconds, while LOW has the
+least significant 16 bits.  USEC and PSEC are the microsecond and
+picosecond counts.
+
+
+** featurep
+
+#+BEGIN_SRC emacs-lisp
+  (featurep FEATURE &optional SUBFEATURE)
+#+END_SRC
+
+=FEATURE= が使用できる状態であれば =t= を返す。
+=provide= を使うことで、使用可能状態であることを示す。 
+この関数では =features= 変数をみる。
+=SUBFEATURE= 変数は、 =FEATURE= のサブを示すために使用する。
+
+** mapconcat
+
+#+BEGIN_SRC emacs-lisp
+  (mapconcat FUNCTION SEQUENCE SEPARATOR)
+#+END_SRC
+
+=FUNCTION= を =SEQUENCE= に適用し、返り値を結合したものを返す。
+
+** identity
+
+#+BEGIN_SRC emacs-lisp
+  (identity ARG)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (identity 'aaa)
+  -> aaa
+  (mapconcat 'identity '("aaa" "bbb" "CCC") "/")
+#+END_SRC
+
+きた値をそのまま返す
+
+** string-match
+
+#+BEGIN_SRC emacs-lisp
+  (string-match REGEXP STRING &optional START)
+#+END_SRC
+
+=REGEXP= に =STRING= 内で最初にマッチしたindexを返す。
+マッチしなければnilを返す。
+=START= が =nil= でなければ、そのindexから探索を開始する。
+
+** replace-match
+
+#+BEGIN_SRC emacs-lisp
+(replace-match NEWTEXT &optional FIXEDCASE LITERAL STRING SUBEXP)
+#+END_SRC
+
+最後のサーチでマッチした部分を =NEWTEXT＝ で置換する。
+
+
+
+

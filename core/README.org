@@ -1,0 +1,19 @@
+* core
+
+起動後一番最初に読まれるディレクトリ
+
+** 進捗
+
+- [ ] core-auto-completion.org
+- [ ] core-configuration-layer.org
+- [ ] core-dotspacemacs.org
+- [ ] core-emacs-backports.org
+- [ ] core-fonts-support.org
+- [ ] core-funcs.org
+- [ ] core-load-paths.org
+- [ ] core-micro-state.org
+- [ ] core-spacemacs-buffer.org
+- [ ] core-spacemacs.org
+- [ ] core-themes-support.org
+- [ ] core-toggle.org
+

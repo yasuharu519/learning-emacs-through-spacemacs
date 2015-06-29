@@ -4,10 +4,10 @@
 
 ** 関数
 
-- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*featurep][featurep]]
-- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*identity][identity]]
-- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*string-match][string-match]]
-- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*replace-match][replace-match]]
+- [[file:../functions.org::*featurep][featurep]]
+- [[file:../functions.org::*identity][identity]]
+- [[file:../functions.org::*string-match][string-match]]
+- [[file:../functions.org::*replace-match][replace-match]]
 
 ** 変数
 

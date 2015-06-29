@@ -329,8 +329,34 @@ adviceを使うことで、現状ある関数を再定義することが可能�
 
 シンボルに関数が定義されていれば =t=
 
+** consp
 
+#+BEGIN_SRC emacs-lisp
+(consp OBJECT)
+#+END_SRC
 
+=OBJECT= がコンスセルであれば =t=
+
+** keywordp
+
+#+BEGIN_SRC emacs-lisp
+(keywordp OBJECT)
+#+END_SRC
+
+=OBJECT= がキーワードであれば =t=
+
+** nreverse
+
+#+BEGIN_SRC emacs-lisp
+(nreverse LIST)
+#+END_SRC
+
+逆順にして返す
+
+#+BEGIN_SRC emacs-lisp
+  (setq l '("aaa" "bbb" "ccc"))
+  (nreverse l)
+#+END_SRC
 
 
 

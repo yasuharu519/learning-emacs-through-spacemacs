@@ -5,11 +5,11 @@
 
 ** 関数
 
-- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/functions.org::*current-time][current-time]]
-
+- [[file:functions.org::*current-time][current-time]]
+  
 ** 変数
 
-- [[file:~/Dropbox/Documents/programming/learning-elisp-through-spacemacs/variables.org::*message-log-max][message-log-max]]
+- [[file:variables.org::*message-log-max][message-log-max]]
 
 
 ** 処理
@@ -54,6 +54,8 @@
 のような関数が使用可能。
 
 =core-emacs-backports= は、 =subr-x= が使えないemacsのための関数を定義
+
+[[file:core-emacs-backports.org][backports]]
 
 
 #+BEGIN_SRC emacs-lisp

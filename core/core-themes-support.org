@@ -1,69 +1,81 @@
-;;; core-themes-support.el --- Spacemacs Core File
-;;
-;; Copyright (c) 2012-2014 Sylvain Benner
-;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
-;;
-;; Author: Sylvain Benner <sylvain.benner@gmail.com>
-;; URL: https://github.com/syl20bnr/spacemacs
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; License: GPLv3
+* spacemacs-theme-support.el
 
-(defconst spacemacs-theme-name-to-package
-  '(
-    (alect-black-alt . alect-themes)
-    (alect-black     . alect-themes)
-    (alect-dark-alt  . alect-themes)
-    (alect-dark      . alect-themes)
-    (alect-light-alt . alect-themes)
-    (alect-light     . alect-themes)
-    (ample-light . ample-theme)
-    (ample-flat  . ample-theme)
-    (base16-chalk       . base16-theme)
-    (base16-default     . base16-theme)
-    (base16-eighties    . base16-theme)
-    (base16-greenscreen . base16-theme)
-    (base16-mocha       . base16-theme)
-    (base16-monokai     . base16-theme)
-    (base16-ocean       . base16-theme)
-    (base16-railscasts  . base16-theme)
-    (base16-solarized   . base16-theme)
-    (base16-tomorrow    . base16-theme)
-    (sanityinc-solarized-dark    . color-theme-sanityinc-solarized)
-    (sanityinc-solarized-light   . color-theme-sanityinc-solarized)
-    (sanityinc-tomorrow-blue     . color-theme-sanityinc-tomorrow)
-    (sanityinc-tomorrow-bright   . color-theme-sanityinc-tomorrow)
-    (sanityinc-tomorrow-day      . color-theme-sanityinc-tomorrow)
-    (sanityinc-tomorrow-eighties . color-theme-sanityinc-tomorrow)
-    (sanityinc-tomorrow-night    . color-theme-sanityinc-tomorrow)
-    (colorsarenice-dark  . colorsarenice-theme)
-    (colorsarenice-light . colorsarenice-theme)
-    (hemisu-dark  . hemisu-theme)
-    (hemisu-light . hemisu-theme)
-    (minimal-light . minimal-theme)
-    (moe-dark  . moe-theme)
-    (moe-light . moe-theme)
-    (stekene-dark  . stekene-theme)
-    (stekene-light . stekene-theme)
-    (brin     . sublime-themes)
-    (dorsey   . sublime-themes)
-    (fogus    . sublime-themes)
-    (graham   . sublime-themes)
-    (granger  . sublime-themes)
-    (hickey   . sublime-themes)
-    (junio    . sublime-themes)
-    (mccarthy . sublime-themes)
-    (odersky  . sublime-themes)
-    (ritchie  . sublime-themes)
-    (spolsky  . sublime-themes)
-    (wilson   . sublime-themes)
-    (zonokai-blue . zonokai-theme)
-    (zonokai-red  . zonokai-theme)
-    )
-  "alist matching a theme name with its package name, required when
-package name does not match theme name + `-theme' suffix.")
+** 関数
 
+- [[file:../functions.org::*memq][memq]]
+- [[file:../functions.org::*deftheme][deftheme]]
+- [[file:../functions.org::*assq][assq]]
+- [[file:../functions.org::*let*][let*]]
+- [[file:../functions.org::*load-theme][load-theme]]
+- [[file:../functions.org::*disable-theme][disable-theme]]
+- [[file:../functions.org::*append][append]]
+- [[file:../functions.org::*pop][pop]]
+- [[file:../functions.org::*message][message]]
+- [[file:../functions.org::*defadvice][defadvice]]
+
+** 変数
+
+** 処理
+
+#+BEGIN_SRC emacs-lisp
+  (defconst spacemacs-theme-name-to-package
+    '(
+      (alect-black-alt . alect-themes)
+      (alect-black     . alect-themes)
+      (alect-dark-alt  . alect-themes)
+      (alect-dark      . alect-themes)
+      (alect-light-alt . alect-themes)
+      (alect-light     . alect-themes)
+      (ample-light . ample-theme)
+      (ample-flat  . ample-theme)
+      (base16-chalk       . base16-theme)
+      (base16-default     . base16-theme)
+      (base16-eighties    . base16-theme)
+      (base16-greenscreen . base16-theme)
+      (base16-mocha       . base16-theme)
+      (base16-monokai     . base16-theme)
+      (base16-ocean       . base16-theme)
+      (base16-railscasts  . base16-theme)
+      (base16-solarized   . base16-theme)
+      (base16-tomorrow    . base16-theme)
+      (sanityinc-solarized-dark    . color-theme-sanityinc-solarized)
+      (sanityinc-solarized-light   . color-theme-sanityinc-solarized)
+      (sanityinc-tomorrow-blue     . color-theme-sanityinc-tomorrow)
+      (sanityinc-tomorrow-bright   . color-theme-sanityinc-tomorrow)
+      (sanityinc-tomorrow-day      . color-theme-sanityinc-tomorrow)
+      (sanityinc-tomorrow-eighties . color-theme-sanityinc-tomorrow)
+      (sanityinc-tomorrow-night    . color-theme-sanityinc-tomorrow)
+      (colorsarenice-dark  . colorsarenice-theme)
+      (colorsarenice-light . colorsarenice-theme)
+      (hemisu-dark  . hemisu-theme)
+      (hemisu-light . hemisu-theme)
+      (minimal-light . minimal-theme)
+      (moe-dark  . moe-theme)
+      (moe-light . moe-theme)
+      (stekene-dark  . stekene-theme)
+      (stekene-light . stekene-theme)
+      (brin     . sublime-themes)
+      (dorsey   . sublime-themes)
+      (fogus    . sublime-themes)
+      (graham   . sublime-themes)
+      (granger  . sublime-themes)
+      (hickey   . sublime-themes)
+      (junio    . sublime-themes)
+      (mccarthy . sublime-themes)
+      (odersky  . sublime-themes)
+      (ritchie  . sublime-themes)
+      (spolsky  . sublime-themes)
+      (wilson   . sublime-themes)
+      (zonokai-blue . zonokai-theme)
+      (zonokai-red  . zonokai-theme)
+      )
+    "alist matching a theme name with its package name, required when
+  package name does not match theme name + `-theme' suffix.")
+#+END_SRC
+
+テーマ名と、パッケージ名の対応関係を保持したalist
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs/load-theme (theme)
   "Load THEME."
   ;; Unless Emacs stock themes
@@ -99,7 +111,14 @@ package name does not match theme name + `-theme' suffix.")
       (let ((pkg (format "%s-theme" (symbol-name theme))))
         (spacemacs/load-or-install-package (intern pkg))))))
   (load-theme theme t))
+#+END_SRC
 
+=zonokai-blue= など、特定のテーマの場合にはパッケージインストールを行うように。
+
+カスタムテーマは =custom-theme-load-path= に追加した上で、最終的にロード処理を行う。
+
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs/cycle-spacemacs-theme ()
   "Cycle through themes defined in `dotspacemacs-themes.'"
   (interactive)
@@ -110,13 +129,22 @@ package name does not match theme name + `-theme' suffix.")
   (setq  spacemacs--cur-theme (pop spacemacs--cycle-themes))
   (message "Loading theme %s..." spacemacs--cur-theme)
   (spacemacs/load-theme spacemacs--cur-theme))
+#+END_SRC
 
+カスタムテーマを回転させて切り替え
+
+#+BEGIN_SRC emacs-lisp
 (defadvice load-theme (after spacemacs/load-theme-adv activate)
   "Perform post load processing."
   (let ((theme (ad-get-arg 0)))
     (setq spacemacs--cur-theme theme)
     (spacemacs/post-theme-init theme)))
+#+END_SRC
 
+ロード後の振る舞いを定義
+defadviceで変更しているが、今ならnadvice使った方がよさそう
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs/post-theme-init (theme)
   " Some processing that needs to be done when the current theme has been
 changed to THEME."
@@ -133,3 +161,6 @@ changed to THEME."
       (powerline-reset)))
 
 (provide 'core-themes-support)
+#+END_SRC
+
+themeのアップデートに対して行う処理.

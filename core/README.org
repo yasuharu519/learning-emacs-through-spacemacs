@@ -5,6 +5,7 @@
 ** complete
 -  core-emacs-backports.org
 -  core-auto-completion.org
+-  core-themes-support.org
 
 ** uncomplete
 
@@ -16,6 +17,5 @@
 -  core-load-paths.org
 -  core-micro-state.org
 -  core-spacemacs-buffer.org
--  core-themes-support.org
 -  core-toggle.org
 

@@ -216,5 +216,122 @@ obarrayを省略すると、グローバル変数obarrayの値を使う。
 
 バッファローカルな変数を作成。
 
+** memq
+
+#+BEGIN_SRC emacs-lisp
+  (memq ELT LIST)
+#+END_SRC
+
+=ELT= が =LIST= に含まれていれば =nil= 以外をかえす。
+比較は =eq= で行われる。
+
+** deftheme
+
+#+BEGIN_SRC emacs-lisp
+  (deftheme THEME &optional DOC &rest IGNORED)
+#+END_SRC
+
+カスタムテーマを =THEME= として定義。
+例えば、 =foo= というテーマは =foo-theme.el= というファイルで定義されているべき。
+
+** assq
+
+#+BEGIN_SRC emacs-lisp
+  (assq KEY LIST)
+#+END_SRC
+
+=LIST= に含まれる cons の中で、 =car= が =KEY= と =eq= で =nil= 以外になるものがあれば、 =nil= 以外を返す。
+
+#+BEGIN_SRC emacs-lisp
+  (assq 'key1 '((key . key) (key1 . key1) (key2 . key2)))
+#+END_SRC
+
+** let*
+
+#+BEGIN_SRC emacs-lisp
+(let* VARLIST BODY...)
+#+END_SRC
+
+=VARLIST= として宣言された変数を定義し、 =BODY= を実行する。
+=BODY= の最後に実行されたものが値として返される。
+=VARLIST= の中身は、シンボル、 =(SYMBOL VALUEFORM)= 形式のリスト、である必要がある。
+
+
+** load-theme
+
+#+BEGIN_SRC emacs-lisp
+  (load-theme THEME &optional NO-CONFIRM NO-ENABLE)
+#+END_SRC
+
+カスタムテーマのロード。
+テーマファイルは =THEME-theme.el= という名前である必要がある。
+=custom-theme-load-path= で指定されたディレクトリ内にある必要がある。
+
+正しくロードされた場合は =t= を返す。そうでない場合は =nil= 。
+
+** disable-theme
+
+#+BEGIN_SRC emacs-lisp
+(disable-theme THEME)
+#+END_SRC
+
+=THEME= によって、設定されたものをdisableに。
+
+** append
+
+#+BEGIN_SRC emacs-lisp
+  (append &rest SEQUENCES)
+#+END_SRC
+
+追記
+
+** pop
+
+#+BEGIN_SRC emacs-lisp
+  (pop PLACE)
+#+END_SRC
+
+最初のエレメントを取得。リストからは削除。
+
+** message
+
+#+BEGIN_SRC emacs-lisp
+  (message FORMAT-STRING &rest ARGS)
+#+END_SRC
+
+=*Message*= に追記するのと、下にメッセージを表示。
+
+** defadvice
+
+#+BEGIN_SRC emacs-lisp
+(defadvice FUNCTION ARGS &rest BODY)
+#+END_SRC
+
+完全なフォーマットはこちら
+
+adviceを使うことで、現状ある関数を再定義することが可能。ただし、Emacs24.4 では、新しいアドバイス定義方法がある。
+
+[[http://rubikitch.com/2014/10/30/nadvice/][nadvice]]を参考
+
+#+BEGIN_SRC emacs-lisp
+  (defadvice FUNCTION (CLASS NAME [POSITION] [ARGLIST] FLAG...)
+    [DOCSTRING] [INTERACTIVE-FORM]
+    BODY...)
+#+END_SRC
+
+長いので定義は省略
+
+** fboundp
+
+#+BEGIN_SRC emacs-lisp
+  (fboundp SYMBOL)
+#+END_SRC
+
+シンボルに関数が定義されていれば =t=
+
+
+
+
+
 
 

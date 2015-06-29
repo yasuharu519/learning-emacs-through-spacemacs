@@ -4,11 +4,11 @@
 
 ** complete
 -  core-emacs-backports.org
+-  core-auto-completion.org
 
 ** uncomplete
 
 -  core-spacemacs.org
--  core-auto-completion.org
 -  core-configuration-layer.org
 -  core-dotspacemacs.org
 -  core-fonts-support.org

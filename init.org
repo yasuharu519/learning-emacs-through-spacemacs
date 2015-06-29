@@ -8,10 +8,11 @@
 - [[file:functions.org::*defun][defun]]
 - [[file:functions.org::*version<%3D][version<=]]
 - [[file:functions.org::*require][require]]
+- [[file:variables.org::*message-log-max][message-log-max]]
 
 ** 変数
 
-- [emacs-version](https://github.com/yasuharu519/learning-emacs-through-spacemacs/blob/master/variables.md#emacs-version)
+- [[https://github.com/yasuharu519/learning-emacs-through-spacemacs/blob/master/variables.md#emacs-version][emacs-version]]
 
 ** 処理の流れ
 

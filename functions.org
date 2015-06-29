@@ -166,6 +166,55 @@ picosecond counts.
 
 最後のサーチでマッチした部分を =NEWTEXT＝ で置換する。
 
+** defmacro
+
+#+BEGIN_SRC emacs-lisp
+  (defmacro NAME ARGLIST &optional DOCSTRING DECL &rest BODY)
+#+END_SRC
+
+=NAME= をマクロとして定義。
+=(NAME ARGS..)= として、マクロが呼び出された場合は、 =(lambda ARGLIST BODY...)= として、 =ARGS...= に適用される。
+
+** intern
+
+#+BEGIN_SRC emacs-lisp
+  (intern STRING &optional OBARRAY)
+#+END_SRC
+
+そもそも、名前のシンボルを探したり追加したりすることをインターンニングと呼ぶ。
+この関数は、 =name= を名前とするインターンしたシンボルを返す。 
+そのようなシンボルがオブジェクト配列 =obarray= に存在しなければ、
+internは新たなものを作成し、それをオブジェクト配列に追加してから、 それを返す。 
+obarrayを省略すると、グローバル変数obarrayの値を使う。
+
+** set
+
+#+BEGIN_SRC emacs-lisp
+  (set SYMBOL NEWVAL)
+#+END_SRC
+
+シンボルの値を新しい値に変更して返す
+
+** add-hook
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook HOOK FUNCTION &optional APPEND LOCAL)
+#+END_SRC
+
+=HOOK= に =FUNCTION= を登録。
+既に登録されている場合、 =FUNCTION= は登録されない。
+=FUNCTION= は、 =APPEND= が =t= でないかぎり、フックの一番最初に追加。
+
+=LOCAL= が =nil= でなければ、バッファローカルに登録される。
+
+
+** make-variable-buffer-local
+
+#+BEGIN_SRC emacs-lisp
+  (make-variable-buffer-local VARIABLE)
+#+END_SRC
+
+バッファローカルな変数を作成。
 
 
 

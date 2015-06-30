@@ -560,6 +560,67 @@ stringがセットされれば、その値からシードをセットする。
 
 N番目の要素を返す。長さが足りない場合はnil.
 
+** create-image
+
+#+BEGIN_SRC emacs-lisp
+(create-image FILE-OR-DATA &optional TYPE DATA-P &rest PROPS)
+#+END_SRC
+
+イメージを作成。 =FILE-OR-DATA= はファイル名かイメージデータ。
+=DATA-P= が nil でなければ、イメージデータが入力されたことを表す。
+
+** image-size
+
+#+BEGIN_SRC emacs-lisp
+(image-size SPEC &optional PIXELS FRAME)
+#+END_SRC
+
+=(WIDTH . HEIGHT)= のペアでイメージデータのサイズを返す。
+
+
+** floor
+
+#+BEGIN_SRC emacs-lisp
+(floor ARG &optional DIVISOR)
+#+END_SRC
+
+=ARG= よりも大きくなくて、最大の整数を返す。
+=DIVISOR= が渡されると、それで割る。
+
+** make-string
+
+#+BEGIN_SRC emacs-lisp
+  (make-string LENGTH INIT)
+  (insert (make-string 10 ?\ ))
+#+END_SRC
+
+=LENGTH= の長さの string を返す。
+
+
+** save-excursion
+
+#+BEGIN_SRC emacs-lisp
+(save-excursion &rest BODY)
+#+END_SRC
+
+現在のマークやバッファ、などを保持しておき、最終的にリストアする。
+
+
+** widget-create
+
+#+BEGIN_SRC emacs-lisp
+(widget-create TYPE &rest ARGS)
+#+END_SRC
+
+=TYPE= のウィジットを作成する。
+
+
+
+
+
+
+
+
 
 
 

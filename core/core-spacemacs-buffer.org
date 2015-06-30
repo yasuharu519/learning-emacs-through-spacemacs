@@ -9,8 +9,16 @@
 - [[file:../functions.org::*length][length]]
 - [[file:../functions.org::*random][random]]
 - [[file:../functions.org::*nth][nth]]
+- [[file:../functions.org::*create-image][create-image]]
+- [[file:../functions.org::*image-size][image-size]]
+- [[file:../functions.org::*floor][floor]]
+- [[file:../functions.org::*make-string][make-string]]
+- [[file:../functions.org::*save-excursion][save-excursion]]
+- [[file:../functions.org::*widget-create][widget-create]]
 
 ** 変数
+
+- [[file:../variables.org::*mode-line-format][mode-line-format]]
 
 ** 処理
 
@@ -170,8 +178,6 @@ If ALL is non-nil then truly all banners can be selected."
 
 画像ファイルの挿入
 
-ここから!!
-
 #+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer//inject-version ()
   "Inject the current version of spacemacs in the first line of the
@@ -189,7 +195,11 @@ buffer, right justified."
       (goto-char pos)
       (delete-char (length injected))
       (insert injected))))
+#+END_SRC
 
+バージョン番号を挿入。
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer//insert-release-note ()
   "Insert the release note just under the banner."
   (save-excursion
@@ -209,7 +219,11 @@ buffer, right justified."
                                  :action (lambda (&rest ignore) (funcall 'spacemacs/open-change-log))
                                  :mouse-face 'highlight
                                  :follow-link "\C-m"))))))
+#+END_SRC
 
+リリースノートウィジットの作成?
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/toggle-release-note ()
   "Toggle the release note for the buffer."
   (interactive)
@@ -224,27 +238,47 @@ buffer, right justified."
     (setq spacemacs-buffer--release-note-version spacemacs-version)
     (spacemacs/dump-vars-to-file
      '(spacemacs-buffer--release-note-version) spacemacs-buffer--cache-file)))
+#+END_SRC
 
+ウィジット表示の切り替え
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/set-mode-line (format)
   "Set mode-line format for spacemacs buffer."
   (with-current-buffer (get-buffer-create "*spacemacs*")
     (setq mode-line-format format)))
+#+END_SRC
 
+モードラインをセット?
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/message (msg &rest args)
   "Display MSG in message prepended with '(Spacemacs)'.
 The message is displayed only if `dotspacemacs-verbose-loading' is non nil."
   (when dotspacemacs-verbose-loading
     (message "(Spacemacs) %s" (apply 'format msg args))))
+#+END_SRC
 
+ログメッセージに(Spacemacs)をついか
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/warning (msg &rest args)
   "Display MSG as a warning message but in buffer `*Messages*'.
 The message is always displayed. "
   (message "(Spacemacs) Warning: %s" (apply 'format msg args)))
+#+END_SRC
 
+ログフォーマット
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/insert-page-break ()
   "Insert a page break line in spacemacs buffer."
   (spacemacs-buffer/append "\n\n\n"))
+#+END_SRC
 
+改ページ行の追加
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/append (msg &optional messagebuf)
   "Append MSG to spacemacs buffer. If MESSAGEBUF is not nil then MSG is
  also written in message buffer."
@@ -254,7 +288,11 @@ The message is always displayed. "
       (insert msg)
       (if messagebuf (message "(Spacemacs) %s" msg)))
     (spacemacs-buffer/set-mode-line "")))
+#+END_SRC
 
+メッセージのアペンド
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/replace-last-line (msg &optional messagebuf)
   "Replace the last line of the spacemacs buffer with MSG. If MESSAGEBUF is
  not nil then MSG is also written in message buffer."
@@ -265,7 +303,11 @@ The message is always displayed. "
       (insert msg)
       (if messagebuf (message "(Spacemacs) %s" msg)))
     (spacemacs-buffer/set-mode-line "")))
+#+END_SRC
 
+最後の行を消してリプレイス
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/insert-framed-text
     (msg &optional caption hpadding)
   "Insert MSG in spacemacs buffer within a frame of width FILL-COLUMN.
@@ -276,7 +318,11 @@ parameters."
     (let ((buffer-read-only nil))
       (insert (spacemacs//render-framed-text msg spacemacs-buffer--banner-length
                                              caption hpadding)))))
+#+END_SRC
 
+framed-text追加
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/insert-framed-text-from-file
     (filepath &optional caption hpadding)
   "Insert at point the content of FILENAME file in spacemacs buffer in a
@@ -291,7 +337,11 @@ parameters."
       (let ((buffer-read-only nil))
         (insert (spacemacs//render-framed-text filepath spacemacs-buffer--banner-length
                                                caption hpadding))))))
+#+END_SRC
 
+ファイルから framed-text 追加
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs//render-framed-text (content &optional width caption hpadding)
   "Return a formated string framed with plained lines of width FILL-COLUMN.
 
@@ -338,7 +388,11 @@ The vertical spacing is always one line."
        "╰" (make-string hpadding ?─)
        (make-string fill-column ?─)
        (make-string hpadding ?─) "╯"))))
+#+END_SRC
 
+枠づくり
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs//render-framed-line (line hpadding)
   "Return a formated LINE with borders of a frame on each side and
 with width FILL-COLUMN.
@@ -352,7 +406,11 @@ HPADDING is the horizontal spacing betwee the content line and the frame border.
       (concat "│" (make-string hpadding ?\s)
               line (make-string fill ?\s)
               (make-string hpadding ?\s) "│\n"))))
+#+END_SRC
 
+枠づくり
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/loading-animation ()
   "Display the progress bar by chunk of size `spacemacs--loading-dots-chunk-threshold'."
   (when dotspacemacs-loading-progress-bar
@@ -365,7 +423,11 @@ HPADDING is the horizontal spacing betwee the content line and the frame border.
                                  spacemacs-loading-char)))
       (spacemacs-buffer/set-mode-line spacemacs-loading-string)
       (spacemacs//redisplay))))
+#+END_SRC
 
+ローディングアニメーションの作成
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer//insert-buttons ()
   (goto-char (point-max))
   (insert "      ")
@@ -420,7 +482,11 @@ HPADDING is the horizontal spacing betwee the content line and the frame border.
                  :mouse-face 'highlight
                  :follow-link "\C-m")
   (insert "\n\n"))
+#+END_SRC
 
+ボタン類の追加
+
+#+BEGIN_SRC emacs-lisp
 (defmacro spacemacs//insert-widget-with-shorcut (shortcut-char search-label)
   `(define-key spacemacs-mode-map ,shortcut-char (lambda ()
                                                    (interactive)
@@ -428,7 +494,11 @@ HPADDING is the horizontal spacing betwee the content line and the frame border.
                                                      (search-backward ,search-label (point-min) t))
                                                    (forward-line 1)
                                                    (back-to-indentation))))
+#+END_SRC
 
+ショートカット追加
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer//insert-file-list (list-display-name list shortcut-char)
   (when (car list)
     (spacemacs//insert-widget-with-shorcut "r" "Recent Files:")
@@ -445,7 +515,11 @@ HPADDING is the horizontal spacing betwee the content line and the frame border.
                            :format "%[%t%]"
                            (abbreviate-file-name el)))
           list)))
+#+END_SRC
 
+ファイルリストの追加
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/insert-startupify-lists ()
   (interactive)
   (with-current-buffer (get-buffer-create "*spacemacs*")
@@ -468,7 +542,11 @@ HPADDING is the horizontal spacing betwee the content line and the frame border.
                 (projectile-mode)
                 (when (spacemacs-buffer//insert-file-list "Projects:" (projectile-relevant-known-projects) "p")
                   (insert list-separator))))) dotspacemacs-startup-lists))))
+#+END_SRC
 
+最初に表示する項目を追加
+
+#+BEGIN_SRC emacs-lisp
 (defun spacemacs-buffer/goto-link-line ()
   "Move the point to the beginning of the link line."
   (interactive)
@@ -478,7 +556,11 @@ HPADDING is the horizontal spacing betwee the content line and the frame border.
       (goto-char (point-min))
       (re-search-forward "Homepage")
       (beginning-of-line))))
+#+END_SRC
 
+あまりわかってない
+
+#+BEGIN_SRC emacs-lisp
 ;;this feels like the wrong place to put these
 (add-hook 'spacemacs-mode-hook (lambda ()
                                  (local-set-key [tab] 'widget-forward)
@@ -488,6 +570,7 @@ HPADDING is the horizontal spacing betwee the content line and the frame border.
                                  (local-set-key [return] 'widget-button-press)
                                  (local-set-key [down-mouse-1] 'widget-button-press)
                                  ))
-
 (provide 'core-spacemacs-buffer)
 #+END_SRC
+
+ショートカットの追加

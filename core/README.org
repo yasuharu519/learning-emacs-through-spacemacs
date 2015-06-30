@@ -3,10 +3,12 @@
 起動後一番最初に読まれるディレクトリ
 
 ** complete
+- core-load-paths.org
 - core-emacs-backports.org
 - core-auto-completion.org
 - core-themes-support.org
 - core-funcs.org
+- core-spacemacs-buffer.org
 
 ** uncomplete
 
@@ -14,8 +16,6 @@
 - core-configuration-layer.org
 - core-dotspacemacs.org
 - core-fonts-support.org
-- core-load-paths.org
 - core-micro-state.org
-- core-spacemacs-buffer.org
 - core-toggle.org
 

@@ -17,53 +17,7 @@ elispでの関数について
 #+END_SRC
 
 =NAME= は関数名。
-=(lambda ARGLIST [DOCSTRING] BODY...)= が定義となる。
-
-** version<=
-
-#+BEGIN_SRC emacs-lisp
-  (version<= V1 V2)
-#+END_SRC
-
-=V1= のほうが =V2= よりもバージョンが小さければ =t= を返す
-
-** require
-
-#+BEGIN_SRC emacs-lisp
-  (require FEATURE &optional FILENAME NOERROR)
-#+END_SRC
-
-=FEATURE= がまだロードされていなければ =FILENAME= から読み出す。
-=FILENAME= が =nil= であれば、 =FEATURE= に =.elc= 、 =.el= を追加したファイルから読み出しを行う。
-これについては、 =get-load-suffixes= を参照。
-=NOERROR= が =nil= でなければ、ファイルが見つからなかったとしても、エラーを出さない。
-
-** add-to-list
-
-#+BEGIN_SRC emacs-lisp
-  (add-to-list LIST-VAR ELEMENT &optional APPEND COMPARE-FN)
-#+END_SRC
-
-=ELEMENT= が =LIST_VAR= に含まれていない場合追加。
-=ELEMENT= が含まれているかどうかのテストは =equal= 関数で行われる。
-もしくは =COMPARE-FN= が =nil= でない場合はそちらが使用される。
-=APPEND= が =nil= でない場合は、末尾に追加、そうでない場合は先頭に追加する。
-
-** expand-file-name
-
-#+BEGIN_SRC emacs-lisp
-  (expand-file-name NAME &optional DEFAULT-DIRECTORY)
-#+END_SRC
-
-=NAME= で指定されたファイルパスを絶対パスに展開
-
-** concat
-
-#+BEGIN_SRC emacs-lisp
-  (concat &rest SEQUENCES)
-#+END_SRC
-
-=SEQUENCES= を連結してstringを返す
+=(lam= を連結してstringを返す
 
 ** unless
 
@@ -121,8 +75,7 @@ picosecond counts.
   (featurep FEATURE &optional SUBFEATURE)
 #+END_SRC
 
-=FEATURE= が使用できる状態であれば =t= を返す。
-=provide= を使うことで、使用可能状態であることを示す。 
+=FEATURE= を使うことで、使用可能状態であることを示す。 
 この関数では =features= 変数をみる。
 =SUBFEATURE= 変数は、 =FEATURE= のサブを示すために使用する。
 
@@ -256,6 +209,8 @@ obarrayを省略すると、グローバル変数obarrayの値を使う。
 =BODY= の最後に実行されたものが値として返される。
 =VARLIST= の中身は、シンボル、 =(SYMBOL VALUEFORM)= 形式のリスト、である必要がある。
 
+let との違いは、中で宣言しているものに対して参照が可能
+
 
 ** load-theme
 
@@ -357,6 +312,254 @@ adviceを使うことで、現状ある関数を再定義することが可能�
   (setq l '("aaa" "bbb" "ccc"))
   (nreverse l)
 #+END_SRC
+
+** find-file-noselect
+
+#+BEGIN_SRC emacs-lisp
+  (find-file-noselect FILENAME &optional NOWARN RAWFILE WILDCARDS)
+#+END_SRC
+
+=FILENAME= のファイルを読み込み、バッファを返す。
+既にバッファが作成されていれば、それを返す。
+
+
+** set-buffer
+
+#+BEGIN_SRC emacs-lisp
+(set-buffer BUFFER-OR-NAME)
+#+END_SRC
+
+バッファ =BUFFER-OR-NAME= を現在編集中のバッファとして設定する。
+
+** file-name-directory
+
+#+BEGIN_SRC emacs-lisp
+(file-name-directory FILENAME)
+#+END_SRC
+
+=FILENAME= の名前のディレクトリコンポーネントを返す?
+
+** save-buffer
+
+#+BEGIN_SRC emacs-lisp
+(save-buffer &optional ARG)
+#+END_SRC
+
+バッファをセーブする
+
+** kill-buffer
+
+#+BEGIN_SRC emacs-lisp
+(kill-buffer &optional BUFFER-OR-NAME)
+#+END_SRC
+
+=BUFFER-OR-NAME= のバッファを kill する。
+
+
+** loop
+
+#+BEGIN_SRC emacs-lisp
+(loop CLAUSE...)
+#+END_SRC
+
+ループマクロ
+
+書き方
+#+BEGIN_SRC emacs-lisp
+  For clauses:
+    for VAR from/upfrom/downfrom EXPR1 to/upto/downto/above/below EXPR2 by EXPR3
+    for VAR = EXPR1 then EXPR2
+    for VAR in/on/in-ref LIST by FUNC
+    for VAR across/across-ref ARRAY
+    for VAR being:
+      the elements of/of-ref SEQUENCE [using (index VAR2)]
+      the symbols [of OBARRAY]
+      the hash-keys/hash-values of HASH-TABLE [using (hash-values/hash-keys V2)]
+      the key-codes/key-bindings/key-seqs of KEYMAP [using (key-bindings VAR2)]
+      the overlays/intervals [of BUFFER] [from POS1] [to POS2]
+      the frames/buffers
+      the windows [of FRAME]
+  Iteration clauses:
+    repeat INTEGER
+    while/until/always/never/thereis CONDITION
+  Accumulation clauses:
+    collect/append/nconc/concat/vconcat/count/sum/maximize/minimize FORM
+      [into VAR]
+  Miscellaneous clauses:
+    with VAR = INIT
+    if/when/unless COND CLAUSE [and CLAUSE]... else CLAUSE [and CLAUSE...]
+    named NAME
+    initially/finally [do] EXPRS...
+    do EXPRS...
+    [finally] return EXPR
+#+END_SRC
+
+** symbol-value
+
+#+BEGIN_SRC emacs-lisp
+(symbol-value SYMBOL)
+#+END_SRC
+
+=SYMBOL= の値を返す。 void の場合はエラーを返す。
+
+
+** redisplay
+
+#+BEGIN_SRC emacs-lisp
+(redisplay &optional FORCE)
+#+END_SRC
+
+再描画を行う
+
+** dolist
+
+#+BEGIN_SRC emacs-lisp
+(dolist (VAR LIST [RESULT]) BODY...)
+#+END_SRC
+
+** find-file
+
+
+#+BEGIN_SRC emacs-lisp
+(find-file FILENAME &optional WILDCARDS)
+#+END_SRC
+
+=FILENAME= のファイルを探して編集。
+
+
+** goto-char
+
+#+BEGIN_SRC emacs-lisp
+(goto-char POSITION)
+#+END_SRC
+
+移動する。
+バッファの最初は point_min, 最後は point_max
+
+** re-search-forward
+
+#+BEGIN_SRC emacs-lisp
+(re-search-forward REGEXP &optional BOUND NOERROR COUNT)
+#+END_SRC
+
+Search forward from point for regular expression REGEXP.
+Set point to the end of the occurrence found, and return point.
+An optional second argument bounds the search; it is a buffer position.
+The match found must not extend after that position.
+Optional third argument, if t, means if fail just return nil (no error).
+  If not nil and not t, move to limit of search and return nil.
+Optional fourth argument is repeat count--search for successive occurrences.
+
+Search case-sensitivity is determined by the value of the variable
+`case-fold-search', which see.
+
+See also the functions `match-beginning', `match-end', `match-string',
+and `replace-match'.
+
+** beginning-of-line
+
+(beginning-of-line &optional N)
+
+Move point to beginning of current line (in the logical order).
+With argument N not nil or 1, move forward N - 1 lines first.
+If point reaches the beginning or end of buffer, it stops there.
+
+This function constrains point to the current field unless this moves
+point to a different line than the original, unconstrained result.
+If N is nil or 1, and a front-sticky field starts at point, the point
+does not move.  To ignore field boundaries bind
+`inhibit-field-text-motion' to t, or use the `forward-line' function
+instead.  For instance, `(forward-line 0)' does the same thing as
+`(beginning-of-line)', except that it ignores field boundaries.
+
+
+** insert-file-contents
+
+#+BEGIN_SRC emacs-lisp
+(insert-file-contents FILENAME &optional VISIT BEG END REPLACE)
+#+END_SRC
+
+ポイントの後に =FILENAME= のファイルを挿入する。
+絶対パスと、挿入された文字数が返される。
+
+=BEG= と =END= を指定することで、ファイルの一部を挿入することもできる。ただし、文字数ではなくてバイト数で指定。
+=VISIT= が nilでなければ、 =BEG= , =END= は nilである必要がある。
+
+** display-graphic-p
+
+#+BEGIN_SRC emacs-lisp
+(display-graphic-p &optional DISPLAY)
+#+END_SRC
+
+=DISPLAY= がグラフィックディスプレイでなければ nil 以外を返す。
+
+** image-type-available-p
+
+#+BEGIN_SRC emacs-lisp
+(image-type-available-p TYPE)
+#+END_SRC
+
+指定した画像形式が利用可能であれば =t= 
+
+
+** integerp
+
+#+BEGIN_SRC emacs-lisp
+(integerp OBJECT)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (integerp 1)
+  (integerp 1.0)
+  (floatp 1.0)
+  (floatp 1)
+#+END_SRC
+
+integerであれば =t= 
+
+** length
+
+#+BEGIN_SRC emacs-lisp
+(length SEQUENCE)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (length "sawada")
+  (length "尾頭")
+  (length '(a b c))
+#+END_SRC
+
+vectorの長さや、リスト、stringの長さを返す。
+マルチバイトキャラクターの場合は文字数となる。
+バイト数を数えたい場合は string-bytes を使うこと。
+
+
+** random
+
+#+BEGIN_SRC emacs-lisp
+(random &optional LIMIT)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (random)
+  (random 10)
+  (random "sawada")
+#+END_SRC
+
+擬似乱数を返す。
+
+=LIMIT= が与えられた場合は、[0, LIMIT) のなかで返す。
+=t= が与えられれば、今の時間とpidからシードを設定する
+stringがセットされれば、その値からシードをセットする。
+
+** nth
+
+#+BEGIN_SRC emacs-lisp
+(nth N LIST)
+#+END_SRC
+
+N番目の要素を返す。長さが足りない場合はnil.
+
 
 
 

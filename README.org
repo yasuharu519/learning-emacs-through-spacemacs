@@ -33,6 +33,7 @@ The license is GPLv3 for all parts as `Spacemacs` does, this includes:
 
 *** 未完了
 
+**** Contrib
       15 ./contrib/auctex/config.org
       78 ./contrib/auctex/packages.org
       32 ./contrib/auto-completion/config.org
@@ -146,6 +147,8 @@ The license is GPLv3 for all parts as `Spacemacs` does, this includes:
       42 ./contrib/vagrant/packages.org
       16 ./contrib/vim-empty-lines/packages.org
       42 ./contrib/ycmd/packages.org
+
+**** core
      864 ./core/core-configuration-layer.org
      268 ./core/core-dotspacemacs.org
       92 ./core/core-fonts-support.org
@@ -159,6 +162,8 @@ The license is GPLv3 for all parts as `Spacemacs` does, this includes:
       81 ./core/tests/core-funcs-utest.org
      113 ./core/tests/core-spacemacs-buffer-ftest.org
       38 ./core/tests/core-spacemacs-ftest.org
+
+**** spacemacs
      259 ./spacemacs/config.org
      421 ./spacemacs/extensions/centered-cursor/centered-cursor-mode.org
       93 ./spacemacs/extensions/emoji-cheat-sheet.org
@@ -185,5 +190,4 @@ The license is GPLv3 for all parts as `Spacemacs` does, this includes:
      843 ./spacemacs/funcs.org
      463 ./spacemacs/keybindings.org
     2784 ./spacemacs/packages.org
-   26247 total
 

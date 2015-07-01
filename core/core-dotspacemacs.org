@@ -1,14 +1,12 @@
-;;; core-dotspacemacs.el --- Spacemacs Core File
-;;
-;; Copyright (c) 2012-2014 Sylvain Benner
-;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
-;;
-;; Author: Sylvain Benner <sylvain.benner@gmail.com>
-;; URL: https://github.com/syl20bnr/spacemacs
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; License: GPLv3
+* core-dotspacemacs.el
+
+** 関数
+
+** 変数
+
+** 処理
+
+#+BEGIN_SRC emacs-lisp
 (defconst dotspacemacs-template-directory
   (expand-file-name (concat spacemacs-core-directory "templates/"))
   "Templates directory.")
@@ -266,3 +264,5 @@ If MSG is not nil then display a message in `*Messages'."
      (if (fboundp ',func) (,func))))
 
 (provide 'core-dotspacemacs)
+#+END_SRC
+

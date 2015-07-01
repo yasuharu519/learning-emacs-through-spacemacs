@@ -1,14 +1,12 @@
-;;; core-toggle.el --- Spacemacs Core File
-;;
-;; Copyright (c) 2012-2014 Sylvain Benner
-;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
-;;
-;; Author: Sylvain Benner <sylvain.benner@gmail.com>
-;; URL: https://github.com/syl20bnr/spacemacs
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; License: GPLv3
+* core-toggle.org
+
+** 関数
+
+** 変数
+
+** 処理
+
+#+BEGIN_SRC emacs-lisp
 (require 'core-funcs)
 
 (defvar spacemacs-toggles '()
@@ -66,3 +64,4 @@ used."
        ,@bindkeys)))
 
 (provide 'core-toggle)
+#+END_SRC

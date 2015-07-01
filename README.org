@@ -30,6 +30,7 @@ The license is GPLv3 for all parts as `Spacemacs` does, this includes:
      166 ./core/core-themes-support.org
      173 ./core/core-funcs.org
      576 ./core/core-spacemacs-buffer.org
+      92 ./core/core-fonts-support.org
 
 *** 未完了
 
@@ -151,7 +152,6 @@ The license is GPLv3 for all parts as `Spacemacs` does, this includes:
 **** core
      864 ./core/core-configuration-layer.org
      268 ./core/core-dotspacemacs.org
-      92 ./core/core-fonts-support.org
      245 ./core/core-micro-state.org
      407 ./core/core-spacemacs.org
       68 ./core/core-toggle.org

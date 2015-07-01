@@ -1,14 +1,12 @@
-;;; core-configuration-layer.el --- Spacemacs Core File
-;;
-;; Copyright (c) 2012-2014 Sylvain Benner
-;; Copyright (c) 2014-2015 Sylvain Benner & Contributors
-;;
-;; Author: Sylvain Benner <sylvain.benner@gmail.com>
-;; URL: https://github.com/syl20bnr/spacemacs
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; License: GPLv3
+* core-configuration-layer.el
+
+** 関数
+
+** 変数
+
+** 処理
+
+#+BEGIN_SRC emacs-lisp
 (require 'ht)
 (require 'package)
 (require 'core-dotspacemacs)
@@ -862,3 +860,4 @@ deleted safely."
     (setq configuration-layer-error-count 1)))
 
 (provide 'core-configuration-layer)
+#+END_SRC

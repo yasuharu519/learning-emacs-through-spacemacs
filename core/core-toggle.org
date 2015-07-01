@@ -8,6 +8,11 @@
 
 #+BEGIN_SRC emacs-lisp
 (require 'core-funcs)
+#+END_SRC
+
+パッケージインポート
+
+#+BEGIN_SRC emacs-lisp
 
 (defvar spacemacs-toggles '()
   "List of all declared toggles. The structure of an element is a

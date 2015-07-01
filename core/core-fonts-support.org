@@ -2,6 +2,11 @@
 
 ** 関数
 
+- [[file:../functions.org::*set-default-font][set-default-font]]
+- [[file:../functions.org::*setq-default][setq-default]]
+- [[file:../functions.org::*pcase][pcase]]
+- [[file:../functions.org::*truncate][truncate]]
+
 ** 変数
 
 ** 処理
@@ -72,13 +77,21 @@
           (set-fontset-font "fontset-default"
                             '(#x2190 . #x2200) fallback-spec2 nil 'prepend)))
       ))
+#+END_SRC
 
+フォントのフォールバック設定等
+
+#+BEGIN_SRC emacs-lisp
   (defun spacemacs/compute-powerline-height ()
     "Return an adjusted powerline height."
     (let ((scale (if (and (boundp 'powerline-scale) powerline-scale)
                      powerline-scale 1)))
       (truncate (* scale (frame-char-height)))))
+#+END_SRC
 
+パワーラインの高さ計算
+
+#+BEGIN_SRC emacs-lisp
   (defun spacemacs/set-font (&rest args)
     "Deprecated function, display a warning message."
     (spacemacs-buffer/warning (concat "spacemacs/set-font is deprecated. "
@@ -89,4 +102,6 @@
 
   (provide 'core-fonts-support)
 #+END_SRC
+
+もう使ってない関数らしい
 

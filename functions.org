@@ -625,3 +625,51 @@ N番目の要素を返す。長さが足りない場合はnil.
 
 
 
+
+** set-default-font
+
+#+BEGIN_SRC emacs-lisp
+(set-default-font FONT &optional KEEP-SIZE FRAMES)
+#+END_SRC
+
+23.1 からもはや使われていない。 =set-frame-font= を使えとのこと。
+
+=KEEP-SIZE= が =nil= となっているばあいは、フレームの行数とかをキープするが、 =nil= でないばあいは、
+行数などを調整する。
+
+
+** setq-default
+
+#+BEGIN_SRC emacs-lisp
+(setq-default [VAR VALUE]...)
+#+END_SRC
+
+変数のデフォルト値を設定する。
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default VAR VALUE VAR VALUE...)
+#+END_SRC
+
+のように設定することで、複数設定も可能。
+
+** pcase
+
+#+BEGIN_SRC emacs-lisp
+(pcase EXP &rest CASES)
+#+END_SRC
+
+普通のcaseでは、eq でしか比較ができないが、pcase では equal での比較ができる。（らしい
+
+[[http://kawabata.github.io/blog/2013-03-12-emacs23.html][参考]]
+
+
+** truncate
+
+#+BEGIN_SRC emacs-lisp
+(truncate ARG &optional DIVISOR)
+#+END_SRC
+
+float から int へ。
+
+
+

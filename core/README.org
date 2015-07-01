@@ -9,13 +9,13 @@
 - core-themes-support.org
 - core-funcs.org
 - core-spacemacs-buffer.org
+- core-fonts-support.org
 
 ** uncomplete
 
 - core-spacemacs.org
 - core-configuration-layer.org
 - core-dotspacemacs.org
-- core-fonts-support.org
 - core-micro-state.org
 - core-toggle.org
 
